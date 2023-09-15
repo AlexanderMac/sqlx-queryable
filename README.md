@@ -1,18 +1,29 @@
-# repo-template-go
+# sqlx-queryable
 
-[![Build Status](https://github.com/AlexanderMac/repo-template-go/workflows/CI/badge.svg)](https://github.com/AlexanderMac/repo-template-go/actions?query=workflow%3ACI)
+[![Build Status](https://github.com/AlexanderMac/sqlx-queryable/workflows/CI/badge.svg)](https://github.com/AlexanderMac/sqlx-queryable/actions?query=workflow%3ACI)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![GoDoc](https://pkg.go.dev/badge/github.com/AlexanderMac/repo-template-go)](https://pkg.go.dev/github.com/AlexanderMac/repo-template-go)
+[![GoDoc](https://pkg.go.dev/badge/github.com/AlexanderMac/sqlx-queryable)](https://pkg.go.dev/github.com/AlexanderMac/sqlx-queryable)
 
-### Features
-TODO
-- Golang v1.20
+sqlx-queryable provides the `Queryable` interface which wraps `sqlx.DB` and `sqlx.Tx` methods. Requires Golang v1.18 or greater.
 
 ### Install
-TODO
+```sh
+go get github.com/alexandermac/sqlx-queryable
+```
 
 ### Usage
-TODO
+```go
+// `q` can be sqlx.DB or sqlx.Tx here
+func getRecords(q Queryable) ([]Record, error) {
+	var records []Record
+	err := q.Select(&records, "SELECT * FROM records")
+	if err != nil {
+		panic(err)
+	}
+
+	return records, nil
+}
+```
 
 ### License
 Licensed under the MIT license.

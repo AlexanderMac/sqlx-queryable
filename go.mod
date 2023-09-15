@@ -1,3 +1,5 @@
-module github.com/AlexanderMac/repo-template-go
+module github.com/alexandermac/sqlx-queryable
 
-go 1.20
+go 1.18
+
+require github.com/jmoiron/sqlx v1.3.5 // indirect
