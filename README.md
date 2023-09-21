@@ -4,7 +4,8 @@
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![GoDoc](https://pkg.go.dev/badge/github.com/AlexanderMac/sqlx-queryable)](https://pkg.go.dev/github.com/AlexanderMac/sqlx-queryable)
 
-sqlx-queryable provides the `Queryable` interface which wraps `sqlx.DB` and `sqlx.Tx` methods. Requires Golang v1.18 or greater.
+sqlx-queryable provides the `Queryable` interface which wraps identical `sqlx.DB` and `sqlx.Tx` methods. The interface can be used when a function performs a database query directly or under a transaction.
+Requires Golang v1.18 or greater.
 
 ### Install
 ```sh
@@ -13,7 +14,9 @@ go get github.com/alexandermac/sqlx-queryable
 
 ### Usage
 ```go
-// `q` can be sqlx.DB or sqlx.Tx here
+import queryable "github.com/alexandermac/sqlx-queryable"
+
+// `q` can be sqlx.DB or sqlx.Tx
 func getRecords(q Queryable) ([]Record, error) {
 	var records []Record
 	err := q.Select(&records, "SELECT * FROM records")
